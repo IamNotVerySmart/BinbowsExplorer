@@ -17,13 +17,13 @@ namespace BinbowsExplorer
 
             foreach (var drive in drives)
             {
-                //DriveInfo driveInfo = new DriveInfo(drive);
+                DriveInfo driveInfo = new DriveInfo(drive);
                 items.Add(new FileModel
                 {
                     Name = drive,//driveInfo.Name,
                     Type = "Drive",
                     Size = 0,//driveInfo.TotalSize,
-                    Path = drive//driveInfo.Name
+                    FilePath = drive//driveInfo.Name
                 });
             }
             return items;
@@ -43,7 +43,7 @@ namespace BinbowsExplorer
                         Name = dirInfo.Name,
                         Type = "Folder",
                         Size = 0,
-                        Path = dirInfo.FullName
+                        FilePath = dirInfo.FullName
                     });
                 }
                 return items;
@@ -67,10 +67,9 @@ namespace BinbowsExplorer
                     items.Add(new FileModel
                     {
                         Name = fileInfo.Name,
-                        Type = fileInfo.Name[fileInfo.Name.IndexOf(".")..fileInfo.Name.Length],
-                        // może być to -> "fileInfo.Extension", ale ja chcę to /\
+                        Type = fileInfo.Extension,
                         Size = fileInfo.Length,
-                        Path = fileInfo.FullName
+                        FilePath = fileInfo.FullName
                     });
                 }
                 return items;
@@ -80,6 +79,14 @@ namespace BinbowsExplorer
                 MessageBox.Show("Directory not found!");
                 return null;
             }
+        }
+
+        public List<FileModel> loadFilesAndDirectories(string directoryPath)
+        {
+            List<FileModel> items = new List<FileModel>();
+            items.AddRange(getDirectories(directoryPath));
+            items.AddRange(getFiles(directoryPath));
+            return items;
         }
     }
 }

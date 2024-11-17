@@ -17,13 +17,31 @@ namespace BinbowsExplorer
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
-            FileLogics fl = new FileLogics();
-            DirectoryTreeView.ItemsSource = fl.loadDrives();
-            FileListView.ItemsSource = fl.getFiles(@"C:\Users\dalone\Desktop");
-            //DirectoryTreeView.ItemsSource = fl.getDirectories(@"C:\Users\dalone\Desktop");
+            //Binding binding = new Binding();
+            //binding.Source = new UserInteractions();
+
+            //binding.Path = new PropertyPath("DirectoryPath");
+            //binding.Mode = BindingMode.TwoWay;
+            //binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            //directoryPath.SetBinding(TextBox.TextProperty, binding);
+
+            //UserInteractions.DirectoryPath = @"C:\Users\dalone\Desktop\";
+            //directoryPath.Text = Directory.GetLogicalDrives()[0];
+            //updateView();
+        }
+
+        private void directoryPath_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                //updateView();
+                Keyboard.ClearFocus();
+            }
         }
     }
 }
