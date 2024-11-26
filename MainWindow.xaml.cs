@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace BinbowsExplorer
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 
@@ -22,24 +19,12 @@ namespace BinbowsExplorer
         public MainWindow()
         {
             InitializeComponent();
-            //Binding binding = new Binding();
-            //binding.Source = new UserInteractions();
-
-            //binding.Path = new PropertyPath("DirectoryPath");
-            //binding.Mode = BindingMode.TwoWay;
-            //binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            //directoryPath.SetBinding(TextBox.TextProperty, binding);
-
-            //UserInteractions.DirectoryPath = @"C:\Users\dalone\Desktop\";
-            //directoryPath.Text = Directory.GetLogicalDrives()[0];
-            //updateView();
         }
 
         private void directoryPath_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                //updateView();
                 Keyboard.ClearFocus();
             }
         }

@@ -22,13 +22,14 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox Text="{Binding CurrentPath}"
+        <TextBox Text="{Binding CurrentPath, UpdateSourceTrigger=PropertyChanged}"
                  TextAlignment="Center"
-                 Name="directoryPath"
+                 Name="DirectoryPath"
                  Grid.ColumnSpan="2"
                  Grid.Column="0"
                  Grid.Row="0"
                  HorizontalAlignment="Center"
+                 Width="500"
                  KeyDown="directoryPath_KeyDown"/>
 
         <TreeView x:Name="DirectoryTreeView" 

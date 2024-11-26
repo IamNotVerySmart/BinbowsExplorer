@@ -10,6 +10,7 @@ namespace BinbowsExplorer
 {
     class FileLogics
     {
+        // Zwraca listę dysków w komputerze
         public List<FileModel> loadDrives()
         {
             var drives = Directory.GetLogicalDrives();
@@ -20,15 +21,16 @@ namespace BinbowsExplorer
                 DriveInfo driveInfo = new DriveInfo(drive);
                 items.Add(new FileModel
                 {
-                    Name = drive,//driveInfo.Name,
+                    Name = drive,
                     Type = "Drive",
-                    Size = 0,//driveInfo.TotalSize,
-                    FilePath = drive//driveInfo.Name
+                    Size = 0,
+                    FilePath = drive
                 });
             }
             return items;
         }
 
+        // Zwraca listę folderów z podanej ścieżki
         public List<FileModel> getDirectories(string directoryPath)
         {
             List<FileModel> items = new List<FileModel>();
@@ -55,6 +57,7 @@ namespace BinbowsExplorer
             }
         }
 
+        // Zwraca listę plików z podanej ścieżki
         public List<FileModel> getFiles(string directoryPath)
         {
             List<FileModel> items = new List<FileModel>();
@@ -81,6 +84,7 @@ namespace BinbowsExplorer
             }
         }
 
+        // Funkcja zwracająca listę plików oraz folderów z podanej ścieżki, wykorzystuje funkcję getDirectories oraz getFiles
         public List<FileModel> loadFilesAndDirectories(string directoryPath)
         {
             List<FileModel> items = new List<FileModel>();
